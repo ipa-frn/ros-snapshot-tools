@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<launch>
+    <machine name="atom" address="192.168.1.234" env-loader="/opt/ros/kinetic/env.sh"
+        user="ipa325" passwort="---"/>
+
+    <!-- <node machine="atom" -->
+    <node
+        name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+      <param name="video_device" value="/dev/video1" />
+      <param name="image_width" value="640" />
+      <param name="image_height" value="480" />
+      <param name="pixel_format" value="yuyv" />
+      <param name="camera_frame_id" value="usb_cam" />
+      <param name="io_method" value="mmap"/>
+    </node>
+
+    <!-- <node machine="atom" -->
+    <node
+        name="image_saver" pkg="image_view" type="image_saver" output="screen">
+        <param name="save_all_image" value="false"/>
+        <param name="filename_format" value="/tmp/snapshot%04d.%s"/>
+        <remap from="image" to="/usb_cam/image_raw" />
+    </node>
+
+    <!-- <node machine="atom" -->
+    <node
+        name="video_recorder" pkg="image_view" type="video_recorder" output="screen">
+        <param name="save_all_video" value="true"/>
+        <remap from="image" to="/usb_cam/image_raw" />
+        <param name="filename" value="/tmp/output.avi"/>
+    </node>
+
+</launch>

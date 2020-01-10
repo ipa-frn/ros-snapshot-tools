@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This example application shows the usage of scripts.
+
+-->
+
+<pitasc>
+
+    <models>
+        <include package="pitasc_library" file="models/pitasc.xml"/>
+        <include package="pitasc_library" file="models/skills.xml"/>
+
+        <include package="pitasc_library" file="universal_robots/ur.xml"/>
+        <include package="snapshot_tools" file="models/scripts_image_view.xml"/>
+    </models>
+
+    <clone prototype="project">
+
+        <member id="configuration">
+            <clone id="configuration" prototype="default_configuration"/>
+        </member>
+
+        <member id="environment">
+            <clone prototype="robot_ur5">
+                <member id="robot_driver.max_velocity">0.5</member>
+                <member id="robot_driver.max_acceleration">2.0</member>
+            </clone>
+        </member>
+
+        <member id="applications">
+            <clone prototype="skill_sequence">
+                <member id="robot" reference_id="environment.robot_ur5"/>
+                <member id="skills">
+
+                    <clone prototype="skill_idle_duration">
+                        <member id="duration">0.5</member>
+                        <member id="scripts">
+                            <!-- Call Trigger service -->
+                            <clone prototype="script_image_saver"/>
+                        </member>
+                    </clone>
+
+                    <clone prototype="skill_idle_duration">
+                        <member id="duration">5</member>
+                        <member id="scripts">
+                            <!-- Call Trigger service -->
+                            <clone prototype="script_start_video_recorder"/>
+                            <clone prototype="script_stop_video_recorder">
+                                <member id="on_start">False</member>
+                            </clone>
+
+                        </member>
+                    </clone>
+
+                </member>
+
+            </clone>
+        </member>
+
+    </clone>
+
+</pitasc>

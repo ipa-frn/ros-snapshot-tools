@@ -4,7 +4,6 @@
 
     <models>
 
-        <!-- EGL90 Specific Scripts -->
         <type id="script_start_video" base_type="script">
             <meta>
                 <member id="description">Sends a service to start recording</member>

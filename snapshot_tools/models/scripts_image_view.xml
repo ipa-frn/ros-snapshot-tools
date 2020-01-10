@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pitasc>
+
+    <models>
+
+        <type id="script_start_video_recorder" prototype="script_call_trigger_srvs">
+            <meta>
+                <member id="description">Sends a service to start recording by image_pipeline::video_recorder (fork: github.com/ipa-lth/image_pipeline:kinetic)</member>
+                <member id="categories">publisher</member>
+            </meta>
+            <data>
+                <type id="service_name" prototype="string_parameter">
+                    <data>video_recorder/start</data>
+                </type>
+            </data>
+        </type>
+
+        <type id="script_stop_video_recorder" prototype="script_call_trigger_srvs">
+            <meta>
+                <member id="description">Sends a service to stop recording by image_pipeline::video_recorder (fork: github.com/ipa-lth/image_pipeline:kinetic)</member>
+                <member id="categories">publisher</member>
+            </meta>
+            <data>
+                <type id="service_name" prototype="string_parameter">
+                    <data>video_recorder/stop</data>
+                </type>
+            </data>
+        </type>
+
+        <type id="script_image_saver" prototype="script_call_empty_srvs">
+            <meta>
+                <member id="description">Sends a service to save a current image by image_pipeline::image_saver (set parameter "save_all_image:=false")</member>
+                <member id="categories">publisher</member>
+            </meta>
+            <data>
+                <type id="service_name" prototype="string_parameter">
+                    <data>image_saver/save</data>
+                </type>
+            </data>
+        </type>
+
+    </models>
+
+</pitasc>

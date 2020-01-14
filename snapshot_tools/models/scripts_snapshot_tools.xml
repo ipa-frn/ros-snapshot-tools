@@ -4,86 +4,87 @@
 
     <models>
 
-        <type id="script_start_video" base_type="script">
+        <!-- EGL90 Specific Scripts -->
+        <type id="script_start_video" prototype="script">
             <meta>
                 <member id="description">Sends a service to start recording</member>
                 <member id="implementation">
-                    <instance type="python">
+                    <clone prototype="python">
                         <member id="module">snapshot_tools.snapshot_service_caller</member>
                         <member id="class">StartVideoService</member>
-                    </instance>
+                    </clone>
                 </member>
             </meta>
             <data>
-                <type id="service_name" base_type="string_parameter">
+                <type id="service_name" prototype="string_parameter">
                     <data>snapshoter_video/start</data>
                 </type>
-                <type id="file_name" base_type="string_parameter"/>
+                <type id="file_name" prototype="string_parameter"/>
 
-                <type id="on_start" base_type="bool_parameter">
+                <type id="on_start" prototype="bool_parameter">
                     <data>True</data>
                 </type>
-                <type id="wait_for_service" base_type="bool_parameter">
+                <type id="wait_for_service" prototype="bool_parameter">
                     <data>True</data>
                 </type>
-                <type id="namespace" base_type="string_parameter">
+                <type id="namespace" prototype="string_parameter">
                     <data></data>
                 </type>
             </data>
         </type>
 
 
-        <type id="script_stop_video" base_type="script">
+        <type id="script_stop_video" prototype="script">
             <meta>
                 <member id="description">Sends a service to stop recording</member>
                 <member id="implementation">
-                    <instance type="python">
+                    <clone prototype="python">
                         <member id="module">snapshot_tools.snapshot_service_caller</member>
                         <member id="class">StopVideoService</member>
-                    </instance>
+                    </clone>
                 </member>
             </meta>
             <data>
-                <type id="service_name" base_type="string_parameter">
+                <type id="service_name" prototype="string_parameter">
                     <data>snapshoter_video/stop</data>
                 </type>
 
-                <type id="on_start" base_type="bool_parameter">
+                <type id="on_start" prototype="bool_parameter">
                     <data>True</data>
                 </type>
-                <type id="wait_for_service" base_type="bool_parameter">
+                <type id="wait_for_service" prototype="bool_parameter">
                     <data>True</data>
                 </type>
-                <type id="namespace" base_type="string_parameter">
+                <type id="namespace" prototype="string_parameter">
                     <data></data>
                 </type>
             </data>
         </type>
 
-        <type id="snapshot_service" base_type="script">
+        <type id="snapshot_service" prototype="script">
             <meta>
                 <member id="description">Sends a service to take a image</member>
                 <member id="implementation">
-                    <instance type="python">
+                    <clone prototype="python">
                         <member id="module">snapshot_tools.snapshot_service_caller</member>
                         <member id="class">TakeSnapShotService</member>
-                    </instance>
+                    </clone>
                 </member>
             </meta>
             <data>
-                <type id="service_name" base_type="string_parameter">
+                <type id="service_name" prototype="string_parameter">
                     <data>snapshoter/save</data>
                 </type>
 
-                <type id="file_name" base_type="string_parameter"/>
+                <type id="file_name" prototype="string_parameter"/>
 
-                <type id="on_start" base_type="bool_parameter">
+                <type id="on_start" prototype="bool_parameter">
                     <data>True</data>
                 </type>
-                <type id="wait_for_service" base_type="bool_parameter">
+                <type id="wait_for_service" prototype="bool_parameter">
                     <data>True</data>
                 </type>
-                <type id="namespace" base_type="string_parameter">
+                <type id="namespace" prototype="string_parameter">
                     <data></data>
                 </type>
             </data>

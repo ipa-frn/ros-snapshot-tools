@@ -2,9 +2,9 @@
 
 import rospy
 
-from pitasc_library.scripts.service_caller  import ServiceCallerNEW, EmptyService
+from pitasc_library.scripts.service_caller  import ServiceCaller, EmptyService
 
-class StartVideoService(ServiceCallerNEW):
+class StartVideoService(ServiceCaller):
     """Call a srvs of type 'snapshot_tools/String'."""
 
     def __init__(self, service_name, file_name, namespace=None,
@@ -14,7 +14,7 @@ class StartVideoService(ServiceCallerNEW):
         req = StringRequest()
         req.str = file_name
 
-        ServiceCallerNEW.__init__(
+        ServiceCaller.__init__(
             self, service_name, namespace,
             String, req, on_start, wait_for_service)
 

@@ -81,7 +81,7 @@ def main():
     global filename
     rospy.init_node('snapshoter_video')
     # Define your image topic
-    image_topic = rospy.get_param("~image", "/image_raw")
+    image_topic = rospy.get_param("~image", "/usb_cam/image_raw")
     # Set up your subscriber and define its callback
 
     s = rospy.Service('~stop', Empty, empty_srv_cb)

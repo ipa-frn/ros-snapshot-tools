@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- DEPRECATED -->
+<!-- FOR LEGACY ONLY -->
+
+<!-- use scripts_snapshot_tools.xml -->
+<!-- BETTER use scripts image_view.xml -->
+
 <pitasc>
 
     <models>
@@ -87,60 +93,6 @@
                 <type id="namespace" prototype="string_parameter">
                     <data></data>
                 </type>
-            </data>
-        </type>
-
-        <type id="start_video" prototype="skill_idle_once">
-            <meta>
-                <member id="description">A skill that starts video recording.</member>
-                <member id="categories">single_robot</member>
-            </meta>
-
-            <data>
-                <type id="file_name" prototype="string_parameter">
-                    <data>recording_{number}_{timestamp}</data>
-                </type>
-
-                <member id="scripts">
-                    <clone prototype="script_start_video">
-                        <member id="file_name" reference_id="file_name" />
-                    </clone>
-                </member>
-
-            </data>
-        </type>
-
-        <type id="stop_video" prototype="skill_idle_once">
-            <meta>
-                <member id="description">A skill that starts video recording.</member>
-                <member id="categories">single_robot</member>
-            </meta>
-
-            <data>
-                <member id="scripts">
-                    <clone prototype="script_stop_video"/>
-                </member>
-
-            </data>
-        </type>
-
-        <type id="snapshot" prototype="skill_idle_once">
-            <meta>
-                <member id="description">A skill that takes a picture</member>
-                <member id="categories">single_robot</member>
-            </meta>
-
-            <data>
-                <type id="file_name" prototype="string_parameter">
-                    <data>recording_{number}_{timestamp}</data>
-                </type>
-
-                <member id="scripts">
-                    <clone prototype="snapshot_service">
-                        <member id="file_name" reference_id="file_name" />
-                    </clone>
-                </member>
-
             </data>
         </type>
     </models>

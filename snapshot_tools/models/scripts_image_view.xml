@@ -40,6 +40,52 @@
             </data>
         </type>
 
+        <type id="start_video_recorder" prototype="skill_idle_once">
+            <meta>
+                <member id="description">A skill that starts video recording.</member>
+                <member id="categories">single_robot</member>
+            </meta>
+
+            <data>
+
+                <member id="scripts">
+                    <clone prototype="script_start_video_recorder">
+                    </clone>
+                </member>
+
+            </data>
+        </type>
+
+        <type id="stop_video_recorder" prototype="skill_idle_once">
+            <meta>
+                <member id="description">A skill that starts video recording.</member>
+                <member id="categories">single_robot</member>
+            </meta>
+
+            <data>
+                <member id="scripts">
+                    <clone prototype="script_stop_video_recorder"/>
+                </member>
+
+            </data>
+        </type>
+
+        <type id="image_saver" prototype="skill_idle_once">
+            <meta>
+                <member id="description">A skill that takes a picture</member>
+                <member id="categories">single_robot</member>
+            </meta>
+
+            <data>
+
+                <member id="scripts">
+                    <clone prototype="script_image_saver">
+                    </clone>
+                </member>
+
+            </data>
+        </type>
+
     </models>
 
 </pitasc>

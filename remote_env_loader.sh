@@ -1,9 +1,24 @@
 #!/bin/bash
 
-export ROS_IP=192.168.1.234
-export ROS_MASTER_URI=http://192.168.1.17:11311
+export MY_CATKIN_WORKSPACE=~/catkin_ws
+source ~/.bashrc
 
-echo *THIS FILE IS TRANSFERED AND EXECUTED*
-source /home/ipa325/catkin_ws/devel/setup.bash
+if [ $(lsb_release -sc) == "trusty" ]; then
+    export MY_ROS_DISTRO="indigo"
+elif [ $(lsb_release -sc) == "xenial" ]; then
+    export MY_ROS_DISTRO="kinetic"
+fi
+
+. /opt/ros/$MY_ROS_DISTRO/setup.sh
+
+if [ -e $MY_CATKIN_WORKSPACE/devel/setup.bash ]; then
+    source $MY_CATKIN_WORKSPACE/devel/setup.bash
+elif [ -e /u/robot/git/care-o-bot/devel/setup.bash ]; then
+    source /u/robot/git/care-o-bot/devel/setup.bash
+else
+    source /opt/ros/$MY_ROS_DISTRO/setup.bash
+fi
+
+export ROS_IP=`hostname -I | awk '{print $1}'`
 
 exec "$@"

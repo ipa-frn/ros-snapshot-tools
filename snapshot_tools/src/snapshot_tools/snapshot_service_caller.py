@@ -23,7 +23,7 @@ class StartVideoServiceImageView(ServiceCaller):
 
     def __init__(self, service_name, file_name, namespace=None,
                  on_start=True, wait_for_service=True):
-        from image_view.srv import String
+        from image_view.srv import String, StringRequest
 
         req = StringRequest()
         req.str = file_name

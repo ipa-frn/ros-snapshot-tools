@@ -18,6 +18,21 @@ class StartVideoService(ServiceCaller):
             self, service_name, namespace,
             String, req, on_start, wait_for_service)
 
+class StartVideoServiceImageView(ServiceCaller):
+    """Call a srvs of type 'snapshot_tools/String'."""
+
+    def __init__(self, service_name, file_name, namespace=None,
+                 on_start=True, wait_for_service=True):
+        from image_view.srv import String
+
+        req = StringRequest()
+        req.str = file_name
+
+        ServiceCaller.__init__(
+            self, service_name, namespace,
+            String, req, on_start, wait_for_service)
+
+
 class StopVideoService(EmptyService):
     pass
 

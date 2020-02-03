@@ -16,6 +16,34 @@
             </data>
         </type>
 
+        <type id="script_start_video_recorder_named" prototype="script">
+            <meta>
+                <member id="description">Sends a service to start recording by image_pipeline::video_recorder (fork: github.com/ipa-lth/image_pipeline:kinetic)</member>
+                <member id="implementation">
+                    <clone prototype="python">
+                        <member id="module">snapshot_tools.snapshot_service_caller</member>
+                        <member id="class">StartVideoServiceImageView</member>
+                    </clone>
+                </member>
+            </meta>
+            <data>
+                <type id="service_name" prototype="string_parameter">
+                    <data>video_recorder/start_named</data>
+                </type>
+                <type id="file_name" prototype="string_parameter"/>
+
+                <type id="on_start" prototype="bool_parameter">
+                    <data>True</data>
+                </type>
+                <type id="wait_for_service" prototype="bool_parameter">
+                    <data>True</data>
+                </type>
+                <type id="namespace" prototype="string_parameter">
+                    <data></data>
+                </type>
+            </data>
+        </type>
+
         <type id="script_stop_video_recorder" prototype="script_call_trigger_srvs">
             <meta>
                 <member id="description">Sends a service to stop recording by image_pipeline::video_recorder (fork: github.com/ipa-lth/image_pipeline:kinetic)</member>
@@ -50,6 +78,24 @@
 
                 <member id="scripts">
                     <clone prototype="script_start_video_recorder">
+                    </clone>
+                </member>
+
+            </data>
+        </type>
+        <type id="start_video_recorder_named" prototype="skill_idle_once">
+            <meta>
+                <member id="description">A skill that starts video recording.</member>
+                <member id="categories">single_robot</member>
+            </meta>
+
+            <data>
+                <type id="file_name" prototype="string_parameter">
+                    <data>default</data>
+                </type>
+                <member id="scripts">
+                    <clone prototype="script_start_video_recorder_named">
+                      <member id="file_name" reference_id="file_name"/>
                     </clone>
                 </member>
 

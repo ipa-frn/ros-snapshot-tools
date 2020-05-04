@@ -93,9 +93,13 @@
                 <type id="file_name" prototype="string_parameter">
                     <data>default</data>
                 </type>
+                <type id="namespace" prototype="string_parameter">
+                    <data></data>
+                </type>
                 <member id="scripts">
                     <clone prototype="script_start_video_recorder_named">
-                      <member id="file_name" reference_id="file_name"/>
+                        <member id="file_name" reference_id="file_name"/>
+                        <member id="namespace" reference_id="namespace"/>
                     </clone>
                 </member>
 
@@ -109,8 +113,13 @@
             </meta>
 
             <data>
+                <type id="namespace" prototype="string_parameter">
+                    <data></data>
+                </type>
                 <member id="scripts">
-                    <clone prototype="script_stop_video_recorder"/>
+                    <clone prototype="script_stop_video_recorder">
+                        <member id="namespace" reference_id="namespace"/>
+                    </clone>
                 </member>
 
             </data>
